@@ -2,12 +2,20 @@
 ### 1. Configuración del Entorno
 ```bash
 # Creación del entorno virtual y activación
-pip3 install virtualenv
+pip install virtualenv
+
+#ir a la carpeta que estara alojado el proyecto carpeta base donde se dejara la carpeta ferremas 
+# Ejemplo: FERREMAS\
+
+#crear el entorno virtual con el comando
 virtualenv venv
+
 # El siguiente comando es solo para windows
 call venv\Scripts\activate.bat
 
+#entrar en la carpeta interna del proyecto
 cd ferremas
+#Ej: FERREMAS\ferremas
 
 # Instalación de dependencias iniciales
 pip install Django
