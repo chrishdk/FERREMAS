@@ -32,7 +32,7 @@ def finalize_order(cart_id):
             order.total_amount = total_amount
             order.save()
             
-            cart.items.clear()  # Clear the cart items after the order is placed
+            cart.items.clear() 
 
         return order
 
