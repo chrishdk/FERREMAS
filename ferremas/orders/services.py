@@ -13,7 +13,7 @@ def finalize_order(cart_id):
             order = Order.objects.create(total_amount=total_amount, is_paid=True)
             
             for item in cart.items.all():
-                stock = Stock.objects.get(product=item.product, branch=item.branch)
+                stock = Stock.objects.get(product=item.product, branch=item.branch, product__is_active = True)
                 if stock.quantity < item.quantity:
                     raise ValueError("Insufficient stock for product: {}".format(item.product.name))
                 

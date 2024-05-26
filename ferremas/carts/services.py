@@ -1,13 +1,16 @@
 from stock.models import Stock
+from products.models import Product
 from .models import Cart, CartItem
+
 
 def check_stock(product_id, branch_id, quantity):
     try:
-        stock = Stock.objects.get(product_id=product_id, branch_id=branch_id)
+        stock = Stock.objects.get(product_id=product_id, branch_id=branch_id, product__is_active=True)
+        product = stock.product
         if stock.quantity >= quantity:
-            return True, "Sufficient stock available"
+            return True, f"Sufficient stock available for {product.name}"
         else:
-            return False, "Insufficient stock available"
+            return False, f"Insufficient stock available for {product.name}"
     except Stock.DoesNotExist:
         return False, "Stock information not available"
 

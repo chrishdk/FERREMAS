@@ -12,13 +12,13 @@ def update_stock(product, branch, quantity):
         stock = Stock(product=product, branch=branch, quantity=quantity)
         stock.save()
 
-def check_stock(product, branch, quantity):
-    # Verifica si hay suficiente stock disponible para el producto en la sucursal
-    try:
-        stock = Stock.objects.get(product=product, branch=branch)
-        if stock.quantity >= quantity:
-            return True, "Sufficient stock available"
-        else:
-            return False, "Insufficient stock available"
-    except Stock.DoesNotExist:
-        return False, "Stock information not available"
+# def check_stock(product, branch, quantity):
+#     # Verifica si hay suficiente stock disponible para el producto en la sucursal
+#     try:
+#         stock = Stock.objects.get(product=product, branch=branch)
+#         if stock.quantity >= quantity:
+#             return True, "Sufficient stock available"
+#         else:
+#             return False, "Insufficient stock available"
+#     except Stock.DoesNotExist:
+#         return False, "Stock information not available"
