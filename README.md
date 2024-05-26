@@ -56,8 +56,6 @@ python manage.py migrate
 https://documenter.getpostman.com/view/18246564/2sA3QqhZEa
 
 
-
-
 ### Una API que me permita obtener todos los productos activos existentes
 api/products/
 
