@@ -52,12 +52,21 @@ python manage.py runserver
 python manage.py makemigrations
 python manage.py migrate
 ```
+### Documentacion postman con lo solicitado
+https://documenter.getpostman.com/view/18246564/2sA3QqhZEa
+
+
+
 
 ### Una API que me permita obtener todos los productos activos existentes
-http://127.0.0.1:8000/api/products/
+api/products/
 
 ### Una API que me permita ingresar 1 o más productos a un carro de compras
-http://127.0.0.1:8000/api/cart/add/
+api/cart/add/
 
 ### Una API que me permita pagar el carro de compras y finalizar mi pedido
-http://127.0.0.1:8000/api/orders/finalize/
+api/orders/finalize/
+
+
+### Documentacion postman adicional
+https://documenter.getpostman.com/view/18246564/2sA3QqfYLy
