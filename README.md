@@ -80,3 +80,16 @@ api/orders/finalize/
 
 ### Documentacion postman adicional
 https://documenter.getpostman.com/view/18246564/2sA3QqfYLy
+
+
+
+
+### Integracion de plataformas 005V
+
+### Integrantes:
+
+Alejandro Yañez Almendras
+
+Daniel Stari Zúñiga
+
+Italo Navarrete Rojas
