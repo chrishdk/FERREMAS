@@ -52,6 +52,12 @@ python manage.py runserver
 python manage.py makemigrations
 python manage.py migrate
 ```
+### Comando para cargar el backup de la base de datos
+```bash
+
+python manage.py loaddata backup.json
+```
+
 ### Documentacion postman con lo solicitado
 https://documenter.getpostman.com/view/18246564/2sA3QqhZEa
 
