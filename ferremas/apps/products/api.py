@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import ProductSerializer
-from .services import get_active_products, create_product
+from .serializers import ProductSerializer, ProductWithPriceSerializer
+from .services import get_active_products, create_product, get_products_with_latest_prices
 
 class ActiveProductListView(APIView):
     """
@@ -25,3 +25,10 @@ class AddProductView(APIView):
             return Response({"message": message}, status=status.HTTP_201_CREATED)
         else:
             return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProductWithLatestPriceListView(APIView):
+    def get(self, request):
+        products = get_products_with_latest_prices()
+        serializer = ProductWithPriceSerializer(products, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
