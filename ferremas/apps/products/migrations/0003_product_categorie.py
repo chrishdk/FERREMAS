@@ -7,7 +7,6 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('categories', '0001_initial'),
         ('products', '0002_remove_product_price'),
     ]
 

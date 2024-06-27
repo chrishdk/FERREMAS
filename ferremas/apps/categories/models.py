@@ -1,5 +1,4 @@
 from django.db import models
 
-# Create your models here.
-class categorie(models.Model):
-    categorie = models.CharField(max_length=50)
+class Category(models.Model):
+    category = models.CharField(max_length=50)
