@@ -8,7 +8,7 @@ from .services import created_category
 
 class CategoryListView(APIView):
     def get(self, request):
-        category = category.objects.all()
+        category = Category.objects.all()
         serializer = CategorySerializer(category, many=True)
         return Response(serializer.data)
 
