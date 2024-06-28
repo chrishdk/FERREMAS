@@ -6,15 +6,15 @@ from .serializers import CartSerializer
 from .services import add_to_cart, remove_from_cart
 
 
-class GetCartView(APIView):
-    def get(self, request, cart_id):
+class GetCartUserView(APIView):
+    def post(self, request):
+        user = request.data.get('user')
         try:
-            cart = Cart.objects.get(id=cart_id)
+            cart = Cart.objects.get(user=user)
             serializer = CartSerializer(cart)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Cart.DoesNotExist:
             return Response({"message": "Cart not found"}, status=status.HTTP_404_NOT_FOUND)
-
 
 # class AddToCartView(APIView):
 #     def post(self, request):
@@ -38,13 +38,13 @@ class GetCartView(APIView):
 
 class RemoveFromCartView(APIView):
     def post(self, request):
-        cart_id = request.data.get('cart_id')
+        user = request.data.get('user')
         product_id = request.data.get('product_id')
         branch_id = request.data.get('branch_id')
         quantity = request.data.get('quantity')
 
         try:
-            cart = Cart.objects.get(id=cart_id)
+            cart = Cart.objects.get(user=user)
         except Cart.DoesNotExist:
             return Response({"message": "Cart not found"}, status=status.HTTP_404_NOT_FOUND)
 

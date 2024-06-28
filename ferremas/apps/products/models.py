@@ -8,3 +8,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def deactivate(self):
+        self.is_active = False
+        self.save()
+
+    def activate(self):
+        self.is_active = True
+        self.save()

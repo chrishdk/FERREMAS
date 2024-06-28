@@ -1,8 +1,10 @@
 from django.urls import path
-from .api import ActiveProductListView, AddProductView, ProductWithLatestPriceListView
+from .api import ProductListView, AddProductView, ProductActiveListView, ProductDeactivateView, ProductActivateView
 
 urlpatterns = [
-    path('products/', ActiveProductListView.as_view(), name='product-list'),
+    path('products/', ProductListView.as_view(), name='product-list'),
     path('products/add/', AddProductView.as_view(), name='add-to-product'),
-    path('products/all/', ProductWithLatestPriceListView.as_view(), name='all-products')
+    path('products/all/', ProductActiveListView.as_view(), name='all-products'),
+    path('products/deactivate/', ProductDeactivateView.as_view(), name='deactivate-product'),
+    path('products/activate/', ProductActivateView.as_view(), name='activate-product')
 ]
