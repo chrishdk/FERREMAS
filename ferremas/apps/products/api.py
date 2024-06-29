@@ -27,9 +27,12 @@ class AddProductView(APIView):
 
 class ProductActiveListView(APIView):
     def get(self, request):
-        products = get_products_with_latest_prices()
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        try:
+            products = get_products_with_latest_prices()
+            serializer = ProductSerializer(products, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "Error fetching products"}, status=status.HTTP_400_BAD_REQUEST)
     
 
 class ProductDeactivateView(APIView):
@@ -40,6 +43,7 @@ class ProductDeactivateView(APIView):
             return Response({"message": message}, status=status.HTTP_200_OK)
         else:
             return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
+        
         
 class ProductActivateView(APIView):
     def post(self, request):

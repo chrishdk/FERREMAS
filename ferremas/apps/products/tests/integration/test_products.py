@@ -22,6 +22,7 @@ class TestProductAPIViews:
         
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data) == 1
+        assert response.data[0]['name'] == 'Product 1'
     
 
     def test_create_product(self, api_client):
