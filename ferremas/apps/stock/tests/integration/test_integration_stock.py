@@ -56,3 +56,19 @@ def test_add_stock_to_existing_branch(api_client, product, branch, stock):
     stock.refresh_from_db()
     assert stock.quantity == 150
 
+@pytest.mark.django_db
+def test_add_stock_to_exiting_branch():
+    product = Product.objects.create(name="Producto 1")
+    branch = Branch.objects.create(nombre="Sucursal 1")
+    stock = Stock.objects.create(product=product, branch=branch, quantity=100)
+    api_client = APIClient()
+    url = reverse('add-stock-to-branch')
+    data = {
+        'product': product.id,
+        'branch': branch.id,
+        'quantity': 50
+    }
+    response = api_client.post(url, data, format='json')
+    assert response.status_code == 200
+    stock.refresh_from_db()
+    assert stock.quantity == 150
