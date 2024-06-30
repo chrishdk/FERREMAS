@@ -12,6 +12,16 @@ def update_stock(product, branch, quantity):
         stock = Stock(product=product, branch=branch, quantity=quantity)
         stock.save()
 
+
+
+def add_stock(stock, quantity):
+    stock.quantity += int(quantity)
+    stock.save()
+    return True, "Stock updated successfully"     
+
+
+
+
 # def check_stock(product, branch, quantity):
 #     # Verifica si hay suficiente stock disponible para el producto en la sucursal
 #     try:
