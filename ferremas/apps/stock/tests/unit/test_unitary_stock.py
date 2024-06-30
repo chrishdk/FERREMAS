@@ -5,6 +5,7 @@ from apps.products.models import Product
 from apps.branches.models import Branch
 from apps.stock.models import Stock
 from django.db import IntegrityError
+from apps.stock.serializers import StockSerializer
 
 @pytest.fixture
 def api_factory():
@@ -55,3 +56,15 @@ def test_unique_constraint(product, branch):
         Stock.objects.create(product=product, branch=branch, quantity=50)
 
 
+
+@pytest.mark.django_db
+def test_stock_serialization(product, branch):
+    stock = Stock.objects.create(product=product, branch=branch, quantity=100)
+
+    serializer = StockSerializer(stock)
+    serializerd_data = serializer.data
+
+    assert serializerd_data['id']== stock.id
+    assert serializerd_data['product'] == product.id
+    assert serializerd_data['branch'] == branch.id
+    assert serializerd_data['quantity'] == 100

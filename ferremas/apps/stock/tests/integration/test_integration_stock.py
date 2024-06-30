@@ -56,3 +56,16 @@ def test_add_stock_to_existing_branch(api_client, product, branch, stock):
     stock.refresh_from_db()
     assert stock.quantity == 150
 
+
+@pytest.mark.django_db
+def test_add_stock_to_no_existing_branch(api_client, product, branch, stock):
+    url = reverse('add-stock-to-branch')
+    data = {
+        'product': product.id,
+        'branch': 2,
+        'quantity': 50
+    }
+    response = api_client.post(url, data, format='json')
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    stock.refresh_from_db()
+    assert stock.quantity == 100
