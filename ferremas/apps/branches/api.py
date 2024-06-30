@@ -17,3 +17,12 @@ class AddBranchView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class BranchDetailView(APIView):
+    def get(self, request, pk):
+        try:
+            branch = Branch.objects.get(pk=pk)
+            serializer = BranchSerializer(branch)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Branch.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)

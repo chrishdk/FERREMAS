@@ -16,24 +16,7 @@ class GetCartUserView(APIView):
         except Cart.DoesNotExist:
             return Response({"message": "Cart not found"}, status=status.HTTP_404_NOT_FOUND)
 
-# class AddToCartView(APIView):
-#     def post(self, request):
-#         cart_id = request.data.get('cart_id')
-#         product_id = request.data.get('product_id')
-#         branch_id = request.data.get('branch_id')
-#         quantity = request.data.get('quantity')
 
-#         try:
-#             cart = Cart.objects.get(id=cart_id)
-#         except Cart.DoesNotExist:
-#             cart = Cart.objects.create()
-
-#         success, message = add_to_cart(cart, product_id, branch_id, quantity)
-#         if success:
-#             serializer = CartSerializer(cart)
-#             return Response(serializer.data, status=status.HTTP_200_OK)
-#         else:
-#             return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class RemoveFromCartView(APIView):
@@ -69,3 +52,24 @@ class AddToCartView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+
+# class AddToCartView(APIView):
+#     def post(self, request):
+#         cart_id = request.data.get('cart_id')
+#         product_id = request.data.get('product_id')
+#         branch_id = request.data.get('branch_id')
+#         quantity = request.data.get('quantity')
+
+#         try:
+#             cart = Cart.objects.get(id=cart_id)
+#         except Cart.DoesNotExist:
+#             cart = Cart.objects.create()
+
+#         success, message = add_to_cart(cart, product_id, branch_id, quantity)
+#         if success:
+#             serializer = CartSerializer(cart)
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         else:
+#             return Response({"message": message}, status=status.HTTP_400_BAD_REQUEST)

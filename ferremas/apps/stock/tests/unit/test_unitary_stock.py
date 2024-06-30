@@ -34,20 +34,6 @@ def test_total_stock_view(api_factory, stock):
     assert len(response.data) == 1
     assert response.data[0]['quantity'] == 100
 
-@pytest.mark.django_db
-#Verifica que la vista AddStockToBranchView añade stock a una sucursal existente y actualiza la cantidad de stock correctamente
-def test_add_stock_to_existing_branch(api_factory, product, branch, stock):
-    view = AddStockToBranchView.as_view()
-    data = {
-        'product': product.id,
-        'branch': branch.id,
-        'quantity': 50
-    }
-    request = api_factory.post('/stock/branch/add/', data, format='json')
-    response = view(request)
-    assert response.status_code == 200
-    stock.refresh_from_db()
-    assert stock.quantity == 150
 
 # Pruebas para models.py
 

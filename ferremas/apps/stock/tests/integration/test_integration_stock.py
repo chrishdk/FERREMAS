@@ -24,7 +24,6 @@ def stock(product, branch):
 
 @pytest.mark.django_db
 #Prueba para obtener el stock total de todos los productos en todas las sucursales
-
 def test_total_stock_view(api_client, stock):
     url = reverse('total-stock')
     response = api_client.get(url)
@@ -56,3 +55,4 @@ def test_add_stock_to_existing_branch(api_client, product, branch, stock):
     assert response.status_code == 200
     stock.refresh_from_db()
     assert stock.quantity == 150
+
