@@ -25,8 +25,8 @@ class TestProductModels:
         updated_product = Product.objects.get(id=product.id)
         assert updated_product.name == "Updated Product"
 
-    def test_product_creation_no_name(self):
-        product = Product.objects.create(name="", description="Test Description", is_active=True)
-        assert product.name == ""
+    def test_product_creation_deactivate(self):
+        product = Product.objects.create(name="Test Product", description="Test Description", is_active=False)
+        assert product.name == "Test Product"
         assert product.description == "Test Description"
-        assert product.is_active is True
+        assert product.is_active is False

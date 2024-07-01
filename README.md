@@ -63,8 +63,10 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+### Documentacion postman Completa
+https://documenter.getpostman.com/view/18246564/2sA3QqfYLy
 
-### Documentacion postman con lo solicitado
+### Documentacion postman con lo solicitado EV 2
 https://documenter.getpostman.com/view/18246564/2sA3QqhZEa
 
 
@@ -78,8 +80,7 @@ api/cart/add/
 api/orders/finalize/
 
 
-### Documentacion postman adicional
-https://documenter.getpostman.com/view/18246564/2sA3QqfYLy
+
 
 
 
