@@ -83,6 +83,37 @@ https://documenter.getpostman.com/view/18246564/2sA3QqfYLy
 
 
 
+### Test
+### Como ejecutar el test
+- Para ejecutar el test se debe abrir un CMD en la ruta del proyecto "FERREMAS\ferremas"
+-se debe ejecutar el siguiente comando 
+
+```bash
+# Para ejecutar todas las pruebas
+pytest
+
+```
+### ejemplo de ubicacion de test para cada componente
+
+ferremas/
+│
+├── apps/
+│   ├── Componente/
+│   │   ├── tests/
+│   │   │   ├── unit/
+│   │   │   │   ├── test_unit_componente.py
+│   │   │   │   └── ...
+│   │   │   ├── integration/
+│   │   │   │   ├── test_integration_componente.py
+│   │   │   │   └── ...
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+│
+├── manage.py
+├── requirements.txt
+└── README.md
+
 
 ### Integracion de plataformas 005V
 
